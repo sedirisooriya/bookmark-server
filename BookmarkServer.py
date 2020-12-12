@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+    #!/usr/bin/env python3
 #
 # A *bookmark server* or URI shortener that maintains a mapping (dictionary)
 # between short names and long URIs, checking that each new URI added to the
@@ -135,6 +135,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
             raise NotImplementedError("Step 5 isn't written yet!")
 
 if __name__ == '__main__':
-    server_address = ('', 8000)
+    port = int(os.environ.get('PORT', 8000))  
+    server_address = ('', port)
     httpd = http.server.HTTPServer(server_address, Shortener)
     httpd.serve_forever()
